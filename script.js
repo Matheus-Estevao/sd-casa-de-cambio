@@ -1,4 +1,8 @@
 
+const cleanCurrencyInput = () => {
+  const currencyInput = document.getElementById('currency-input');
+  currencyInput.value = '';
+}
 const cleanList = () => {
 const currencyList = document.getElementById('currency-list');
 currencyList.innerHTML = '';
@@ -35,7 +39,7 @@ const handleSearchEvent = async () => {
  cleanList();
  renderRates(object.rates)
  renderBaseCurrencyTitle(object.base)
- console.log(object)
+ cleanCurrencyInput();
 };
 
 const setupHtmlElements = () => {
