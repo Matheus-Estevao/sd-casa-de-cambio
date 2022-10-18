@@ -5,7 +5,7 @@ const LATEST_ENDPOINT = '/latest';
 const buildLatestExchangeUrl = (currency) => {
   return `${BASE_URL}${LATEST_ENDPOINT}?base=${currency}`
 }
-
+// retorna a taxa de cambio em objeto
 const fetchExchangeRates = async (currency) => {
 try{
        const urlToFetch = buildLatestExchangeUrl(currency);
@@ -21,7 +21,7 @@ try{
     console.log(error);
     throw error;
     }
-}
+};
 
 fetchExchangeRates("BRL")
-.then((exchangeRates) => console.log(exchangeRates))
+.then((exchangeRates) => console.log(exchangeRates));
