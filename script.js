@@ -27,6 +27,10 @@ ratesEntries.forEach((entry) => {
 const handleSearchEvent = async () => {
  const currencyElement = document.getElementById('currency-input');
  const currencyValue = currencyElement.value;
+ if(currencyValue === ''){
+  alert('Preencha o campo de pesquisa!')
+  return
+ }
  const object = await fetchExchangeRates(currencyValue);
  cleanList();
  renderRates(object.rates)
