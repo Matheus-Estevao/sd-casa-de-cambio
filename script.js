@@ -1,3 +1,4 @@
+const CACHE_KEY = '';
 
 const cleanCurrencyInput = () => {
   const currencyInput = document.getElementById('currency-input');
@@ -36,6 +37,8 @@ const handleSearchEvent = async () => {
   return
  }
  const object = await fetchExchangeRates(currencyValue);
+ localStorage.setItem(CACHE_KEY, JSON.stringify(object));
+
  cleanList();
  renderRates(object.rates)
  renderBaseCurrencyTitle(object.base)
@@ -49,4 +52,10 @@ serchButton.addEventListener('click', handleSearchEvent);
 
 window.onload = () => {
 setupHtmlElements();
+const object = JSON.parse(localStorage.getItem(CACHE_KEY));
+if(object) {
+  const {base, rates} = object;
+  renderRates(rates);
+  renderBaseCurrencyTitle(base);
+}
 };
